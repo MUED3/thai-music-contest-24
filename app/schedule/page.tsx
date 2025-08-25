@@ -16,7 +16,7 @@ export default function Schedule() {
       </div>
 
       <div className="card p-5">
-        <h2 className="font-semibold">วันอาทิตย์ 7 กันยายน 2568</h2>
+        <h2>วันอาทิตย์ 7 กันยายน 2568</h2>
         <ul className="list-disc ml-5 mt-2 space-y-1 text-white/85">
           <li>07.30 น. ลงทะเบียนผู้เข้าประกวด</li>
           <li>09.00 น. การประกวดวงเครื่องสายประสมปี่พาทย์ (ประถมศึกษา)</li>
