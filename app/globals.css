@@ -347,7 +347,7 @@ select option {
   background: var(--ci-plum);
   color: rgba(255, 255, 255, 0.75);
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   padding: 1.2rem;
 }
 

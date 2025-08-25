@@ -579,9 +579,6 @@ video {
 .ml-5{
   margin-left: 1.25rem;
 }
-.mt-1{
-  margin-top: 0.25rem;
-}
 .mt-2{
   margin-top: 0.5rem;
 }
@@ -768,9 +765,6 @@ video {
 }
 .p-5{
   padding: 1.25rem;
-}
-.p-3{
-  padding: 0.75rem;
 }
 .px-4{
   padding-left: 1rem;
@@ -1266,7 +1260,7 @@ select option {
   background: var(--ci-plum);
   color: rgba(255, 255, 255, 0.75);
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   padding: 1.2rem;
 }
 
