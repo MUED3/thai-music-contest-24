@@ -19,16 +19,16 @@ export default function Venue() {
         </p>
       </div>
 
-      {/* Hall Plan */}
+      {/* Room Plan */}
       <div className="card p-5 space-y-3">
-        <div className="font-semibold">ผังห้องประกวด (FAG)</div>
+        <div className="font-semibold">ผังห้องประกวด</div>
         <img
-          src="/venue/fag-plan-1.jpg"
-          alt="ผังห้องประกวด FAG"
+          src="/venue/room-plan.png"
+          alt="ผังห้องประกวด"
           className="w-full rounded-xl shadow-md"
         />
         <p className="text-sm text-white/80 text-center">
-          ผังห้องประกวด (FAG) สำหรับผู้เข้าร่วมงาน
+          ภาพแสดงผังห้องประกวด โรงละครฯ PAS1 PAS 2 และ FAG
         </p>
       </div>
     </div>
