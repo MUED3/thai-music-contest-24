@@ -1,6 +1,6 @@
 export default function Schedule() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 fade-in">
       <h1 className="text-3xl font-bold text-ci-gold">กำหนดการ</h1>
 
       <div className="card p-5">
@@ -28,6 +28,9 @@ export default function Schedule() {
       <p className="text-white/80">
         หมายเหตุ: กำหนดการอาจมีการเปลี่ยนแปลงตามความเหมาะสม
       </p>
+      <a href="/referee" className="btn btn-secondary scale-in">
+        รายนามคณะกรรมการตัดสิน
+      </a>
     </div>
   )
 }

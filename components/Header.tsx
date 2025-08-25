@@ -36,6 +36,7 @@ export default function Header() {
           <NavLink href="/finalists">รายชื่อผู้เข้ารอบ</NavLink>
           <NavLink href="/live">ถ่ายทอดสด</NavLink>
           <NavLink href="/venue">แผนที่/สถานที่</NavLink>
+          <NavLink href="/contacts">ติดต่อ</NavLink>
         </nav>
 
         {/* Mobile Toggle */}
@@ -68,6 +69,7 @@ export default function Header() {
             <NavLink href="/finalists" onClick={() => setOpen(false)}>รายชื่อผู้เข้ารอบ</NavLink>
             <NavLink href="/live" onClick={() => setOpen(false)}>ถ่ายทอดสด</NavLink>
             <NavLink href="/venue" onClick={() => setOpen(false)}>แผนที่/สถานที่</NavLink>
+            <NavLink href="/contacts" onClick={() => setOpen(false)}>ติดต่อ</NavLink>
           </div>
         </div>
       )}

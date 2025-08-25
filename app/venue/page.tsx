@@ -1,6 +1,6 @@
 export default function Venue() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 fade-in">
       <h1 className="text-3xl font-bold text-ci-gold">สถานที่จัดงาน & แผนที่</h1>
 
       {/* Location + Map */}
@@ -26,6 +26,7 @@ export default function Venue() {
           src="/venue/room-plan.png"
           alt="ผังห้องประกวด"
           className="w-full rounded-xl shadow-md"
+          width={200}
         />
         <p className="text-sm text-white/80 text-center">
           ภาพแสดงผังห้องประกวด โรงละครฯ PAS1 PAS 2 และ FAG

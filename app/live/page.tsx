@@ -7,7 +7,7 @@ export default function Live() {
     { day: '7 ก.ย. 2568', title: 'ห้องประกวดหลัก (โรงละคร)', url: 'https://www.facebook.com/profile.php?id=100057643420110' },
   ]
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 fade-in">
       <h1 className="text-3xl font-bold text-ci-gold">ถ่ายทอดสด / ลิงก์สำคัญ</h1>
       <p className="text-white/80">ติดตามชมการถ่ายทอดสดผ่าน Facebook Live ของคณะศิลปกรรมศาสตร์</p>
       <div className="grid sm:grid-cols-2 gap-4">
