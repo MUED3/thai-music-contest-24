@@ -102,7 +102,7 @@ export default function Home() {
         <h2 className="text-2xl font-bold font-sao text-ci-gold">
           ติดตามงานแบบ Real-time
         </h2>
-        <p className="text-white/70 max-w-xl mx-auto">
+        <p className="text-white/70 mx-auto">
           สามารถติดตามข้อมูลการประกวดสดใหม่ตลอดเวลา ทั้งผ่านเว็บไซต์และช่องทางโซเชียลมีเดีย
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
