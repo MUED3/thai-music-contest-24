@@ -40,25 +40,29 @@ function CountdownTimer() {
   }, []);
 
   return (
-    <div className="backdrop-blur-sm bg-black/30 p-8 rounded-xl shadow-2xl border border-white/10 hover:border-ci-gold/30 transition-all duration-500">
-      <div className="flex justify-center items-center gap-6 md:gap-10">
+    <div className="max-w-4xl mx-auto backdrop-blur-sm bg-black/30 p-4 sm:p-6 md:p-8 rounded-xl shadow-2xl border border-white/10 hover:border-ci-gold/30 transition-all duration-500">
+      <div className="grid grid-flow-col gap-3 sm:gap-4 md:gap-6 lg:gap-8 text-center auto-cols-max items-center justify-center">
         {[
           { value: timeLeft.days, label: "วัน" },
           { value: timeLeft.hours, label: "ชั่วโมง" },
           { value: timeLeft.minutes, label: "นาที" },
           { value: timeLeft.seconds, label: "วินาที" }
         ].map((item, index) => (
-          <>
-            <div className="text-center" key={index}>
-              <div className="text-4xl md:text-5xl font-bold text-ci-gold bg-black/20 px-4 py-2 rounded-lg">
+          <div key={index} className="flex flex-col items-center">
+            <div className="flex items-center justify-center">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-ci-gold bg-black/20 px-2 sm:px-3 md:px-4 py-2 rounded-lg min-w-[2.5em] text-center">
                 {String(item.value).padStart(2, '0')}
               </div>
-              <div className="text-sm md:text-base text-white/70 mt-2 font-kku">
-                {item.label}
-              </div>
+              {index < 3 && (
+                <div className="text-xl sm:text-2xl md:text-3xl text-ci-gold font-bold mx-1 sm:mx-2">
+                  :
+                </div>
+              )}
             </div>
-            {index < 3 && <div className="text-2xl text-ci-gold font-bold">:</div>}
-          </>
+            <div className="text-xs sm:text-sm md:text-base text-white/70 mt-1 sm:mt-2 font-kku">
+              {item.label}
+            </div>
+          </div>
         ))}
       </div>
     </div>
@@ -87,7 +91,7 @@ export default function Home() {
           />
           <h6 className="text-white/90 text-lg md:text-xl slide-up font-kku leading-relaxed">
             <b>
-              ชิงถ้วยพระราชทานสมเด็จพระกนิษฐาธิราชเจ้า กรมสมเด็จพระเทพรัตนราชสุดาฯ
+              ถ้วยพระราชทานสมเด็จพระกนิษฐาธิราชเจ้า กรมสมเด็จพระเทพรัตนราชสุดาฯ
               สยามบรมราชกุมารี<br />
               และถ้วยประทานพระเจ้าวรวงศ์เธอ พระองค์เจ้าโสมสวลี กรมหมื่นสุทธนารีนาถ
             </b>
