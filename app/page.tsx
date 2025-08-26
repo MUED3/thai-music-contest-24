@@ -90,11 +90,9 @@ export default function Home() {
             className="mx-auto max-h-48 object-contain bounce-in"
           />
           <h6 className="text-white/90 text-lg md:text-xl slide-up font-kku leading-relaxed">
-            <b>
               ถ้วยพระราชทานสมเด็จพระกนิษฐาธิราชเจ้า กรมสมเด็จพระเทพรัตนราชสุดาฯ
               สยามบรมราชกุมารี<br />
               และถ้วยประทานพระเจ้าวรวงศ์เธอ พระองค์เจ้าโสมสวลี กรมหมื่นสุทธนารีนาถ
-            </b>
           </h6>
         </div>
 

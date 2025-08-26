@@ -271,7 +271,7 @@ li {
 .card {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-md);
   padding: 1.5rem;
   backdrop-filter: blur(6px);
   box-shadow: var(--shadow-sm);
@@ -287,7 +287,7 @@ li {
 .btn {
   @apply inline-flex items-center justify-center font-semibold;
   padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   transition: all 0.3s ease;
 }
 
