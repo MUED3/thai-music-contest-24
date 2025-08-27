@@ -1,6 +1,8 @@
 {
+  "/band/page": "app/band/page.js",
   "/page": "app/page.js",
-  "/live/page": "app/live/page.js",
+  "/schedule/page": "app/schedule/page.js",
+  "/contacts/page": "app/contacts/page.js",
   "/venue/page": "app/venue/page.js",
-  "/contacts/page": "app/contacts/page.js"
+  "/finalists/page": "app/finalists/page.js"
 }

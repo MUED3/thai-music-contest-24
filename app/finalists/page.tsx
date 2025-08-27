@@ -2,8 +2,8 @@
 
 import { useState, useMemo } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { 
-  faTrophy, faGraduationCap, faMusic, 
+import {
+  faTrophy, faGraduationCap, faMusic,
   faUsers, faChevronRight, faSchool, faDoorOpen, faBookOpen, faListCheck
 } from "@fortawesome/free-solid-svg-icons"
 import contestantsData from '@/data/contestants.json'
@@ -27,8 +27,8 @@ export default function FinalistsPage() {
 
   const contestants = useMemo(() => {
     if (!selectedLevel || !selectedCategory) return [];
-    return data.filter(d => 
-      d.level === selectedLevel && 
+    return data.filter(d =>
+      d.level === selectedLevel &&
       d.category === selectedCategory
     ).sort((a, b) => a.name.localeCompare(b.name, 'th'));
   }, [selectedLevel, selectedCategory]);
@@ -56,6 +56,17 @@ export default function FinalistsPage() {
         </p>
       </div>
 
+      <div className="flex justify-center mt-8">
+        <a 
+          href="/band" 
+          className="btn btn-secondary flex items-center justify-center gap-3 
+                    group hover:scale-105 transition-all duration-300 
+                    shadow-lg hover:shadow-ci-gold/20"
+        >
+          <span className="text-lg">การประกวดวงดนตรีไทย</span>
+        </a>
+      </div>
+
       {/* Step 1: Level Selection */}
       <div className="space-y-4">
         <h2 className="text-xl font-bold text-ci-gold flex items-center gap-2">
@@ -68,8 +79,8 @@ export default function FinalistsPage() {
               key={level}
               onClick={() => handleLevelSelect(level)}
               className={`p-6 rounded-xl border-2 transition-all duration-300 flex items-center justify-between
-                ${selectedLevel === level 
-                  ? 'bg-ci-gold/20 border-ci-gold scale-105' 
+                ${selectedLevel === level
+                  ? 'bg-ci-gold/20 border-ci-gold scale-105'
                   : 'bg-black/20 border-transparent hover:border-ci-gold/50'}`}
             >
               <div className="flex items-center gap-3">
@@ -96,8 +107,8 @@ export default function FinalistsPage() {
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
                   className={`p-4 rounded-lg border text-left transition-all duration-300 flex items-center gap-3
-                    ${selectedCategory === cat 
-                      ? 'bg-ci-gold/20 border-ci-gold' 
+                    ${selectedCategory === cat
+                      ? 'bg-ci-gold/20 border-ci-gold'
                       : 'bg-black/20 border-white/10 hover:bg-white/5'}`}
                 >
                   <FontAwesomeIcon icon={faMusic} className="text-ci-gold/70" />
@@ -126,13 +137,13 @@ export default function FinalistsPage() {
               </p>
             )}
           </div>
-          
+
           {contestants.length > 0 ? (
             <div>
               {/* Mobile View: List of Cards (visible on screens smaller than md) */}
               <div className="grid gap-4 md:hidden">
                 {contestants.map((contestant, idx) => (
-                  <div 
+                  <div
                     key={idx}
                     className="card p-4 backdrop-blur-sm bg-black/20 rounded-xl border border-white/5"
                   >

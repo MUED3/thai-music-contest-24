@@ -1,76 +1,85 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faLine } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faMapMarkerAlt, faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/20 bg-ci-plum font-kku">
-      <div className="max-w-6xl mx-auto py-8 px-4">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {/* Column 1: About */}
-          <div className="space-y-4">
-            <h3 className="text-ci-gold font-bold text-lg">เกี่ยวกับเรา</h3>
-            <p className="text-white/80 text-sm leading-relaxed">
-              การประกวดดนตรีไทย ภาคตะวันออกเฉียงเหนือ<br />
+    <footer className="bg-ci-purple relative pt-16 pb-8 font-kku border-t-2 border-ci-gold/30">
+      {/* Effect */}
+      <div className="absolute top-0 left-0 w-full h-2 bg-ci-gold/20 blur-xl"></div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-10">
+          
+          {/* Column 1: About & Logo */}
+          <div className="lg:col-span-2 space-y-4">
+            <div className="flex items-center gap-3">
+              <Image src="/ci/kku-logo-white.png" alt="KKU Logo" width={40} height={40} />
+              <div>
+                <h3 className="text-lg font-sao font-bold text-ci-gold tracking-wider">
+                  การประกวดดนตรีไทย
+                </h3>
+                <p className="text-white/60 text-xs">ภาคตะวันออกเฉียงเหนือ</p>
+              </div>
+            </div>
+            <p className="text-white/70 text-sm leading-relaxed">
               ภาควิชาดนตรีไทย สาขาดนตรีและการแสดง<br />
               คณะศิลปกรรมศาสตร์ มหาวิทยาลัยขอนแก่น
             </p>
           </div>
 
           {/* Column 2: Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-ci-gold font-bold text-lg">ลิงก์ด่วน</h3>
+          <div className="space-y-3">
+            <h3 className="text-lg font-sao font-bold text-ci-gold">ลิงก์เว็บไซต์</h3>
             <ul className="space-y-2">
-              <li>
-                <a href="/schedule" className="text-white/80 hover:text-ci-gold transition-colors text-sm">
-                  กำหนดการ
-                </a>
-              </li>
-              <li>
-                <a href="/referee" className="text-white/80 hover:text-ci-gold transition-colors text-sm">
-                  คณะกรรมการ
-                </a>
-              </li>
-              <li>
-                <a href="/contacts" className="text-white/80 hover:text-ci-gold transition-colors text-sm">
-                  ติดต่อเรา
-                </a>
-              </li>
+              <li><Link href="/schedule" className="footer-link">กำหนดการ</Link></li>
+              <li><Link href="/finalists" className="footer-link">รายชื่อผู้เข้ารอบ</Link></li>
+              <li><Link href="/band" className="footer-link">รายชื่อวงดนตรี</Link></li>
+              <li><Link href="/referee" className="footer-link">คณะกรรมการ</Link></li>
             </ul>
           </div>
 
           {/* Column 3: Contact */}
-          <div className="space-y-4">
-            <h3 className="text-ci-gold font-bold text-lg">ติดต่อ</h3>
-            <div className="space-y-2">
-              <p className="text-white/80 flex items-center gap-2 text-sm">
-                <FontAwesomeIcon icon={faMapMarkerAlt} className="text-ci-gold w-4" />
-                123 ถ.มิตรภาพ ต.ในเมือง อ.เมือง จ.ขอนแก่น 40002
+          <div className="md:col-span-2 lg:col-span-2 space-y-3">
+            <h3 className="text-lg font-sao font-bold text-ci-gold">ติดต่อสอบถาม</h3>
+            <div className="space-y-3">
+              <p className="flex items-start gap-3 text-sm text-white/80">
+                <FontAwesomeIcon icon={faMapMarkerAlt} className="text-ci-gold w-4 mt-1 flex-shrink-0" />
+                <span>คณะศิลปกรรมศาสตร์ 123 ถ.มิตรภาพ ต.ในเมือง อ.เมือง จ.ขอนแก่น 40002</span>
               </p>
-              <p className="text-white/80 flex items-center gap-2 text-sm">
-                <FontAwesomeIcon icon={faPhone} className="text-ci-gold w-4" />
-                043-202396
-              </p>
-            </div>
-            {/* Social Media Links */}
-            <div className="flex gap-4 mt-4">
-              <a href="https://www.facebook.com/profile.php?id=100057643420110" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 className="text-white/80 hover:text-ci-gold transition-colors">
-                <FontAwesomeIcon icon={faFacebook} className="w-6 h-6" />
-              </a>
+              <div className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
+                <p className="flex items-center gap-3 text-sm text-white/80">
+                  <FontAwesomeIcon icon={faPhone} className="text-ci-gold w-4" />
+                  <a href="tel:043202396" className="hover:text-ci-gold transition-colors">043-202396</a>
+                </p>
+                <p className="flex items-center gap-3 text-sm text-white/80">
+                  <FontAwesomeIcon icon={faEnvelope} className="text-ci-gold w-4" />
+                  <a href="mailto:music.kku@example.com" className="hover:text-ci-gold transition-colors">music.kku@example.com</a>
+                </p>
+              </div>
             </div>
           </div>
+
         </div>
 
-        {/* Bottom Footer */}
-        <div className="text-center pt-6 border-t border-white/10">
-          <p className="text-white/60 text-sm">
-            © 2568 การประกวดดนตรีไทย ภาคตะวันออกเฉียงเหนือ | 
-            Developed by Yanakon S. All rights reserved.
+        {/* Bottom Bar */}
+        <div className="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-white/10">
+          <p className="text-white/50 text-xs text-center md:text-left mb-4 md:mb-0">
+            © {new Date().getFullYear() + 543} คณะศิลปกรรมศาสตร์ มหาวิทยาลัยขอนแก่น | Developed by Yanakon S.
           </p>
+          <div className="flex gap-4">
+            <a 
+              href="https://www.facebook.com/profile.php?id=100057643420110" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="Facebook Page"
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 text-white/70 hover:bg-ci-gold hover:text-ci-purple transition-all duration-300"
+            >
+              <FontAwesomeIcon icon={faFacebook} className="text-xl" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

@@ -351,6 +351,29 @@ select option {
   padding: 1.2rem;
 }
 
+.footer-link {
+  @apply text-white/70 text-sm relative transition-colors duration-300;
+}
+
+.footer-link:hover {
+  @apply text-ci-gold;
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--ci-gold);
+  transition: width 0.3s ease-out;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
 /* ===============================
    6) Animations
 ================================= */

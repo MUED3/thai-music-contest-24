@@ -127,7 +127,8 @@ export default function Schedule() {
       {/* Footer Section */}
       <div className="space-y-6 text-center">
         <p className="text-white/60 text-sm italic">
-          หมายเหตุ: กำหนดการอาจมีการเปลี่ยนแปลงตามความเหมาะสม
+          หมายเหตุ: กำหนดการอาจมีการเปลี่ยนแปลงตามความเหมาะสม<br />
+          ลำดับการประกวดวงดนตรีไทย จะจับสลากในวันที่ 7 กันยายน 2568
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
           <a href="/venue" 
