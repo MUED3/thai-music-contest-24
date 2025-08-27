@@ -16,12 +16,12 @@ export default function Footer() {
           {/* Column 1: About & Logo */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <Image src="/ci/kku-logo-white.png" alt="KKU Logo" width={40} height={40} />
+              <Image src="/ci/logo.svg" alt="KKU Logo" width={40} height={40} />
               <div>
-                <h3 className="text-lg font-sao font-bold text-ci-gold tracking-wider">
+                <h3 className="text-xl font-sao font-bold text-ci-gold">
                   การประกวดดนตรีไทย
                 </h3>
-                <p className="text-white/60 text-xs">ภาคตะวันออกเฉียงเหนือ</p>
+                <p className="text-white/60 font-sao text-ms">ภาคตะวันออกเฉียงเหนือ</p>
               </div>
             </div>
             <p className="text-white/70 text-sm leading-relaxed">
@@ -56,7 +56,7 @@ export default function Footer() {
                 </p>
                 <p className="flex items-center gap-3 text-sm text-white/80">
                   <FontAwesomeIcon icon={faEnvelope} className="text-ci-gold w-4" />
-                  <a href="mailto:music.kku@example.com" className="hover:text-ci-gold transition-colors">music.kku@example.com</a>
+                  <a href="pburin@kku.ac.th" className="hover:text-ci-gold transition-colors">pburin@kku.ac.th</a>
                 </p>
               </div>
             </div>

@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faClock, faCalendarAlt, faPlay, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+import { faClock, faCalendarAlt, faPlay, faMapMarkerAlt, faBullhorn } from '@fortawesome/free-solid-svg-icons'
 
 // รูปภาพสไลด์ (วางไฟล์ใน public/ci/gallery/)
 const images = [
@@ -79,6 +79,28 @@ export default function Home() {
     return () => clearInterval(timer)
   }, [])
 
+  // --- ข้อมูลสำหรับส่วนประกาศ ---
+  const announcements = [
+    {
+      title: "การใช้ห้องซ้อมสำหรับผู้เข้าแข่งขัน",
+      date: "25 ส.ค. 2568",
+      description: "ฝ่ายจัดการแข่งขันได้จัดเตรียมห้องซ้อมไว้ให้ผู้เข้าแข่งขัน สามารถติดต่อขอใช้ห้องได้ที่คณะทำงาน",
+      href: "/venue"
+    },
+    {
+      title: "กำหนดการจับสลากลำดับการแข่งขัน",
+      date: "24 ส.ค. 2568",
+      description: "การจับสลากลำดับการแข่งขันสำหรับวงดนตรี จะมีขึ้นในวันที่ 7 ก.ย. 2568 เวลา 08.30 น. ณ โรงละครคณะศิลปกรรมศาสตร์",
+      href: "/band"
+    },
+    {
+      title: "ประกาศรายชื่อผู้เข้ารอบชิงชนะเลิศ",
+      date: "22 ส.ค. 2568",
+      description: "ประกาศรายชื่อผู้เข้าแข่งขันที่ผ่านเข้ารอบชิงชนะเลิศในทุกรายการแล้ว สามารถตรวจสอบรายชื่อได้ที่ลิงก์ด้านล่าง",
+      href: "/finalists"
+    }
+  ];
+
   return (
     <div className="space-y-20">
       {/* Hero Section */}
@@ -89,10 +111,10 @@ export default function Home() {
             alt="แบนเนอร์การประกวดดนตรีไทย"
             className="mx-auto max-h-48 object-contain bounce-in"
           />
-          <h6 className="text-white/90 text-lg md:text-xl slide-up font-kku leading-relaxed">
-              ถ้วยพระราชทานสมเด็จพระกนิษฐาธิราชเจ้า กรมสมเด็จพระเทพรัตนราชสุดาฯ
-              สยามบรมราชกุมารี<br />
-              และถ้วยประทานพระเจ้าวรวงศ์เธอ พระองค์เจ้าโสมสวลี กรมหมื่นสุทธนารีนาถ
+          <h6 className="text-white/90 text-lg md:text-md slide-up font-kku leading-relaxed">
+            ถ้วยพระราชทานสมเด็จพระกนิษฐาธิราชเจ้า กรมสมเด็จพระเทพรัตนราชสุดาฯ
+            สยามบรมราชกุมารี<br />
+            และถ้วยประทานพระเจ้าวรวงศ์เธอ พระองค์เจ้าโสมสวลี กรมหมื่นสุทธนารีนาถ
           </h6>
         </div>
 
@@ -109,7 +131,7 @@ export default function Home() {
           <a href="/schedule"
             className="btn btn-primary scale-in flex items-center justify-center gap-2">
             <FontAwesomeIcon icon={faCalendarAlt} />
-            ดูตารางเวลา
+            กำหนดการ
           </a>
           <a href="/finalists"
             className="btn btn-secondary scale-in flex items-center justify-center gap-2">
@@ -149,6 +171,32 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== NEW: Announcements Section ===== */}
+      <section className="section container">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold font-sao text-ci-gold flex items-center justify-center gap-3">
+            <FontAwesomeIcon icon={faBullhorn} />
+            ข่าวประชาสัมพันธ์
+          </h2>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {announcements.map((item, index) => (
+            <div
+              key={index}
+              className="card p-6 flex flex-col backdrop-blur-sm bg-black/30 border border-white/10 hover:border-ci-gold/30 transition-all duration-300"
+            >
+              <div className="mb-3">
+                <h3 className="text-xl font-bold text-ci-gold">{item.title}</h3>
+                <p className="text-xs text-white/50 mt-1">อัปเดตล่าสุด: {item.date}</p>
+              </div>
+              <p className="text-white/80 flex-grow">{item.description}</p>
+              <a href={item.href} className="btn btn-secondary mt-4 self-start">
+                ดูรายละเอียด
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
       {/* Highlights Section - with improved styling */}
       <section className="section container grid gap-8 md:grid-cols-3">
         {[

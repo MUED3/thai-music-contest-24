@@ -3,55 +3,7 @@
 import { useState, useMemo } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers, faGraduationCap, faChevronRight, faListCheck, faInfoCircle, faSchool, faMapPin } from "@fortawesome/free-solid-svg-icons";
-
-// Data structure for contests
-const allContests = [
-  {
-    level: 'มัธยมศึกษา',
-    title: "วงเครื่องสายประสมปี่พาทย์",
-    drawInfo: "จับสลากลำดับการแข่งขัน วันที่ 7 ก.ย. 68",
-    count: 7,
-    bands: [
-        { name: "วงพวงชมพู", school: "โรงเรียนสตรีสิริเกศ", province: "จ.ศรีสะเกษ", drawOrder: "-"},
-        { name: "วงดนตรีไทยโรงเรียนบุญวัฒนา", school: "โรงเรียนบุญวัฒนา", province: "จ.นครราชสีมา", drawOrder: "-"},
-        { name: "วงเทวาดุริยสังคีต", school: "โรงเรียนคูเมืองวิทยาคม", province: "จ.บุรีรัมย์", drawOrder: "-"},
-        { name: "วงมิตตานุกูล", school: "โรงเรียนลือคำหาญวารินชำราบ", province: "จ.อุบลราชธานี", drawOrder: "-"},
-        { name: "วงดนตรีไทยโรงเรียนเบ็ญจะมะมหาราช", school: "โรงเรียนเบ็ญจะมะมหาราช", province: "จ.อุบลราชธานี", drawOrder: "-"},
-        { name: "วงใบตอง", school: "โรงเรียนพิบูลมังสาหาร", province: "จ.อุบลราชธานี", drawOrder: "-"},
-        { name: "วงสังฆกิจวาทิต", school: "โรงเรียนจระเข้หินสังฆกิจวิทยา", province: "จ.นครราชสีมา", drawOrder: "-"},
-    ]
-  },
-  {
-    level: 'มัธยมศึกษา',
-    title: "วงเครื่องสายเครื่องเดี่ยว",
-    drawInfo: "จับสลากลำดับก่อนการแข่งขัน วันที่ 6 ก.ย. 68",
-    count: 5,
-    bands: [
-        { name: "วงชยุตราพิสุธทราวาทิต", school: "โรงเรียนแก่นนครวิทยาลัย", province: "จ.ขอนแก่น", drawOrder: "-" },
-        { name: "วงสิริมหาชุมพล", school: "โรงเรียนศรีสะเกษวิทยาลัย", province: "จ.ศรีสะเกษ", drawOrder: "-" },
-        { name: "วงซันนิวา", school: "โรงเรียนกาฬสินธุ์พิทยาสรรพ์", province: "จ.กาฬสินธุ์", drawOrder: "-" },
-        { name: "วงวิทยาลัยนาฏศิลปร้อยเอ็ด", school: "วิทยาลัยนาฏศิลปร้อยเอ็ด", province: "จ.ร้อยเอ็ด", drawOrder: "-" },
-        { name: "วงสุรสิริวาทิต", school: "โรงเรียนสุรนารีวิทยา", province: "จ.นครราชสีมา", drawOrder: "-" },
-    ]
-  },
-  {
-    level: 'ประถมศึกษา',
-    title: "วงเครื่องสายประสมปี่พาทย์",
-    drawInfo: "จับสลากลำดับการแข่งขัน วันที่ 7 ก.ย. 68",
-    count: 9,
-    bands: [
-        { name: "วงนิลปัทม์ ภิรมย์", school: "โรงเรียนอนุบาลขอนแก่น", province: "จ.ขอนแก่น", drawOrder: "-" },
-        { name: "วงรัตนาลีวาฑิต", school: "โรงเรียนอนุบาลรัตนบัณฑิต", province: "จ.หนองคาย", drawOrder: "-" },
-        { name: "วงแก้วกระเบา", school: "โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายประถมศึกษา (ศึกษาศาสตร์)", province: "จ.ขอนแก่น", drawOrder: "-" },
-        { name: "วงบ้านกุดเรือ", school: "โรงเรียนบ้านกุดเรือ", province: "จ.อุบลราชธานี", drawOrder: "-" },
-        { name: "วงโรงเรียนมูลนิธิวัดศรีอุบลรัตนาราม", school: "โรงเรียนมูลนิธิวัดศรีอุบลรัตนาราม", province: "จ.อุบลราชธานี", drawOrder: "-" },
-        { name: "วงโรงเรียนชุมชนบ้านเพชร (วันครู 2500)", school: "โรงเรียนชุมชนบ้านเพชร (วันครู 2500)", province: "จ.ชัยภูมิ", drawOrder: "-" },
-        { name: "วงโรงเรียนปักธงชัยชุณหะวัณวิทยาคาร", school: "โรงเรียนปักธงชัยชุณหะวัณวิทยาคาร", province: "จ.นครราชสีมา", drawOrder: "-" },
-        { name: "วงอนุบาลหลานย่าโม", school: "โรงเรียนอนุบาลประชารัฐสามัคคี", province: "จ.นครราชสีมา", drawOrder: "-" },
-        { name: "วงโคราวาทิต", school: "โรงเรียนอนุบาลครบุรี", province: "จ.นครราชสีมา", drawOrder: "-" },
-    ]
-  }
-];
+import allContests from '@/data/band.json';
 
 export default function BandContestPage() {
   const [selectedLevel, setSelectedLevel] = useState<string | null>(null);
@@ -75,24 +27,45 @@ export default function BandContestPage() {
 
   const sortedBands = useMemo(() => {
     if (!selectedContest) return [];
-    
-    const bandsCopy = [...selectedContest.bands];
-    const hasNumericOrder = typeof bandsCopy[0]?.drawOrder === 'number';
 
-    if (hasNumericOrder) {
-      // Sort by drawOrder if it's a number
-      return bandsCopy.sort((a, b) => (a.drawOrder as number) - (b.drawOrder as number));
-    }
-    
-    // Otherwise, return in original order
+    const bandsCopy = [...selectedContest.bands];
+
+    // Sort bands with a more robust logic
+    bandsCopy.sort((a, b) => {
+      const aIsNum = typeof a.drawOrder === 'number';
+      const bIsNum = typeof b.drawOrder === 'number';
+
+      if (aIsNum && bIsNum) {
+        // If both are numbers, sort them numerically
+        return Number(a.drawOrder) - Number(b.drawOrder);
+      }
+      if (aIsNum) {
+        // If only 'a' is a number, it should come first
+        return -1;
+      }
+      if (bIsNum) {
+        // If only 'b' is a number, it should come first
+        return 1;
+      }
+      // If neither are numbers (e.g., both are "-"), keep original order
+      return 0;
+    });
+
     return bandsCopy;
   }, [selectedContest]);
 
   return (
+
     <div className="max-w-4xl mx-auto py-8 px-4 space-y-8 font-kku">
-      <h1 className="text-3xl md:text-4xl font-bold text-ci-gold font-sao text-center mb-8">
-        การประกวดวงดนตรีไทย
-      </h1>
+      {/* Header */}
+      <div className="text-center space-y-4">
+        <h1 className="text-3xl md:text-4xl font-bold text-ci-gold font-sao flex items-center justify-center gap-3">
+          การประกวดดนตรีไทยฃ
+        </h1>
+        <p className="text-white/80 max-w-2xl mx-auto text-sm md:text-base">
+          ตรวจสอบรายชื่อวงที่ผ่านเข้ารอบชิงชนะเลิศ การประกวดดนตรีไทย ภาคตะวันออกเฉียงเหนือ ครั้งที่ 24
+        </p>
+      </div>
 
       {/* Step 1: Level Selection */}
       <div className="space-y-4 slide-up" style={{ animationDelay: '200ms' }}>
@@ -106,8 +79,8 @@ export default function BandContestPage() {
               key={level}
               onClick={() => handleLevelSelect(level)}
               className={`p-6 rounded-xl border-2 transition-all duration-300 flex items-center justify-between group
-                ${selectedLevel === level 
-                  ? 'bg-ci-gold/20 border-ci-gold scale-105 shadow-lg shadow-ci-gold/20' 
+                ${selectedLevel === level
+                  ? 'bg-ci-gold/20 border-ci-gold scale-105 shadow-lg shadow-ci-gold/20'
                   : 'bg-black/20 border-transparent hover:border-ci-gold/50'}`}
             >
               <div className="flex items-center gap-3">
@@ -134,8 +107,8 @@ export default function BandContestPage() {
                   key={contest.title}
                   onClick={() => setSelectedContestTitle(contest.title)}
                   className={`w-full p-4 rounded-lg border text-left transition-all duration-300 flex items-center gap-3 scale-in
-                    ${selectedContestTitle === contest.title 
-                      ? 'bg-ci-gold/20 border-ci-gold' 
+                    ${selectedContestTitle === contest.title
+                      ? 'bg-ci-gold/20 border-ci-gold'
                       : 'bg-black/20 border-white/10 hover:bg-white/5'}`}
                   style={{ animationDelay: `${idx * 50}ms` }}
                 >
@@ -153,14 +126,14 @@ export default function BandContestPage() {
       {/* Step 3: Bands List */}
       {selectedContest && (
         <div className="space-y-6 slide-up" style={{ animationDelay: '200ms' }}>
-          <div className="border-b border-white/10 pb-4">
-            <h3 className="text-lg font-bold text-white">{selectedContest.title}</h3>
+          <div className="border-b text-center border-white/10 pb-4">
+            <h3 className="text-2xl font-bold text-ci-gold">{selectedContest.title}</h3>
             <p className="text-white/80 mt-1">
-              วงดนตรีไทยที่ผ่านเข้ารอบชิงชนะเลิศ จำนวน <span className="text-ci-gold font-bold">{selectedContest.count}</span> วง
+              วงดนตรีไทยที่ผ่านเข้ารอบชิงชนะเลิศ จำนวน {selectedContest.count} วง
             </p>
           </div>
-          
-          <div className="bg-ci-gold/10 border-l-4 border-ci-gold text-ci-gold/90 p-3 rounded-r-lg text-lg flex items-center gap-3">
+
+          <div className="bg-ci-gold/10 border-l-4 font-bold border-ci-gold text-ci-gold/90 p-3 rounded-r-lg text-lg flex items-center gap-3">
             <FontAwesomeIcon icon={faInfoCircle} />
             <span>{selectedContest.drawInfo}</span>
           </div>
@@ -208,15 +181,15 @@ export default function BandContestPage() {
                     </thead>
                     <tbody>
                       {sortedBands.map((band, idx) => (
-                        <tr 
-                          key={band.name} 
-                          className="border-t border-white/10 hover:bg-white/10 transition-all duration-300 fade-in"
+                        <tr
+                          key={band.name}
+                          className="border-t font-sarabun border-white/10 hover:bg-white/10 transition-all duration-300 fade-in"
                           style={{ animationDelay: `${idx * 50}ms` }}
                         >
-                          <td className="p-4 font-sarabun font-bold text-center text-white">{band.drawOrder}</td>
-                          <td className="p-4 font-sarabun font-semibold text-white">{band.name}</td>
-                          <td className="p-4 font-sarabun text-white/80">{band.school || '-'}</td>
-                          <td className="p-4 font-sarabun text-white/70">{band.province}</td>
+                          <td className="p-4 font-bold text-center text-white">{band.drawOrder}</td>
+                          <td className="p-4 font-semibold text-white">{band.name}</td>
+                          <td className="p-4 text-white/80">{band.school || '-'}</td>
+                          <td className="p-4 text-white/70">{band.province}</td>
                         </tr>
                       ))}
                     </tbody>

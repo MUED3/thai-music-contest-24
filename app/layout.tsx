@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="th">
       <head>
-        <link rel="icon" href="/ci/logo.svg" />
+        <link rel="icon" href="/ci/favicon.png" />
         <meta name="theme-color" content="#4b174c" />
       </head>
       <body className="min-h-screen flex flex-col bg-gradient-to-b from-ci-purple to-ci-plum text-white font-sao">
