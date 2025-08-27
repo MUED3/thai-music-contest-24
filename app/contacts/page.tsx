@@ -19,7 +19,7 @@ export default function Contact() {
             tel: ""
         },
         {
-            name: "รองศาสตราจารย์ ดร. ธรณัส หิ่นอ่อน",
+            name: "รองศาสตราจารย์ ดร. ธรณัส หินอ่อน",
             email: "tharanat@kku.ac.th",
             role: "",
             tel: ""
