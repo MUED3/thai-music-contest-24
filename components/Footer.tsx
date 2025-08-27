@@ -50,11 +50,7 @@ export default function Footer() {
               </p>
               <p className="text-white/80 flex items-center gap-2 text-sm">
                 <FontAwesomeIcon icon={faPhone} className="text-ci-gold w-4" />
-                043-202-396
-              </p>
-              <p className="text-white/80 flex items-center gap-2 text-sm">
-                <FontAwesomeIcon icon={faEnvelope} className="text-ci-gold w-4" />
-                finearts@kku.ac.th
+                043-202396
               </p>
             </div>
             {/* Social Media Links */}
@@ -64,12 +60,6 @@ export default function Footer() {
                  rel="noopener noreferrer"
                  className="text-white/80 hover:text-ci-gold transition-colors">
                 <FontAwesomeIcon icon={faFacebook} className="w-6 h-6" />
-              </a>
-              <a href="#" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 className="text-white/80 hover:text-ci-gold transition-colors">
-                <FontAwesomeIcon icon={faLine} className="w-6 h-6" />
               </a>
             </div>
           </div>
