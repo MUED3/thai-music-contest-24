@@ -22,7 +22,7 @@ export default function FinalistsPage() {
       data
         .filter(d => d.level === selectedLevel)
         .map(d => d.category)
-    )).sort((a, b) => a.localeCompare(b, 'th'));
+    ));
   }, [selectedLevel]);
 
   const contestants = useMemo(() => {
@@ -30,7 +30,7 @@ export default function FinalistsPage() {
     return data.filter(d =>
       d.level === selectedLevel &&
       d.category === selectedCategory
-    ).sort((a, b) => a.name.localeCompare(b.name, 'th'));
+    );
   }, [selectedLevel, selectedCategory]);
 
   const handleLevelSelect = (level: string) => {
@@ -149,8 +149,8 @@ export default function FinalistsPage() {
                   >
                     <div className="flex justify-between items-start">
                       <h4 className="font-bold text-ci-gold text-lg pr-4">{contestant.name}</h4>
-                      <span className="text-sm font-mono text-white/60 whitespace-nowrap">
-                        #{idx + 1}
+                      <span className="text-sm font-sarabun font-mono text-white/60 whitespace-nowrap">
+                        ลำดับที่ {idx + 1}
                       </span>
                     </div>
                     <div className="mt-3 space-y-2 text-sm">
