@@ -69,8 +69,9 @@ export default function BandContestPage() {
 
   const selectedContest = useMemo(() => {
     if (!selectedContestTitle) return null;
-    return allContests.find(c => c.level === selectedLevel && c.title === selectedContestTitle);
-  }, [selectedLevel, selectedContestTitle]);
+    // Find the contest from the already-filtered list for the selected level
+    return availableContests.find(c => c.title === selectedContestTitle);
+  }, [selectedContestTitle, availableContests]);
 
   const sortedBands = useMemo(() => {
     if (!selectedContest) return [];
