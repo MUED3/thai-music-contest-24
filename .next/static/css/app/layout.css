@@ -911,11 +911,11 @@ video {
 .border-white\/20{
   border-color: rgb(255 255 255 / 0.2);
 }
-.border-white\/5{
-  border-color: rgb(255 255 255 / 0.05);
-}
 .border-white\/30{
   border-color: rgb(255 255 255 / 0.3);
+}
+.border-white\/5{
+  border-color: rgb(255 255 255 / 0.05);
 }
 .bg-black\/20{
   background-color: rgb(0 0 0 / 0.2);
