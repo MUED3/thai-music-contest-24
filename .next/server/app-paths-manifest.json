@@ -1,7 +1,5 @@
 {
-  "/venue/page": "app/venue/page.js",
-  "/page": "app/page.js",
-  "/contacts/page": "app/contacts/page.js",
-  "/band/page": "app/band/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/referee/page": "app/referee/page.js",
   "/finalists/page": "app/finalists/page.js"
 }

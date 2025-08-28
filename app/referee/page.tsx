@@ -67,7 +67,7 @@ export default function Referee() {
                 {
                     name: "ซอด้วง และซออู้",
                     judges: ["ผศ.กฤตษิพัฒน์ เอื้อจิตรเมศ", "ผศ.ดร.สุวรรณี ชูเสน", "ผศ.ดร.วิชฏาลัมพก์ เหล่าวานิช"],
-                    song: "ขับไม้บัณเฑาะว์",
+                    song: "ถอนเสมอ สองชั้น",
                 },
                 {
                     name: "จะเข้",
@@ -77,7 +77,7 @@ export default function Referee() {
                 {
                     name: "ขับร้อง",
                     judges: ["ครูพัฒนี พร้อมสมบัติ", "รศ.ดร.จตุพร สีม่วง", "ผศ.บุตรี สุขปาน"],
-                    song: "สาริกาชมเดือน สามชั้น",
+                    song: "เพลงนาคเกี้ยว สองชั้น",
                 },
                 {
                     name: "ขลุ่ยเพียงออ",
@@ -138,7 +138,7 @@ export default function Referee() {
                         <div key={idx} className="card p-5 space-y-3">
                             <h3 className="font-semibold text-ci-gold">{instrument.name}</h3>
                             <hr className="border-t border-white/30" />
-                            <p className="text-white/80">เพลงที่ใช้ประกวด <b>{instrument.song}</b></p>
+                            <p className="text-white/80">เพลงที่ใช้ประกวด <span><b>{instrument.song}</b></span></p>
                             <p className="text-white/80">กรรมการตัดสิน:</p>
                             <ul className="list-disc ml-5 text-white/80">
                                 {instrument.judges.map((judge, jIndex) => (
