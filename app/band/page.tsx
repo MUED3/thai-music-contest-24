@@ -60,7 +60,7 @@ export default function BandContestPage() {
       {/* Header */}
       <div className="text-center space-y-4">
         <h1 className="text-3xl md:text-4xl font-bold text-ci-gold font-sao flex items-center justify-center gap-3">
-          การประกวดดนตรีไทยฃ
+          การประกวดดนตรีไทย
         </h1>
         <p className="text-white/80 max-w-2xl mx-auto text-sm md:text-base">
           ตรวจสอบรายชื่อวงที่ผ่านเข้ารอบชิงชนะเลิศ การประกวดดนตรีไทย ภาคตะวันออกเฉียงเหนือ ครั้งที่ 24

@@ -71,7 +71,7 @@ export default function FinalistsPage() {
       <div className="space-y-4">
         <h2 className="text-xl font-bold text-ci-gold flex items-center gap-2">
           <span className="bg-ci-gold text-black rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">1</span>
-          เลือกระดับ
+          เลือกระดับชั้น
         </h2>
         <div className="grid sm:grid-cols-2 gap-4">
           {['ประถมศึกษา', 'มัธยมศึกษา'].map(level => (
