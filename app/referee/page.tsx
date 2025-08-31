@@ -5,7 +5,7 @@ export default function Referee() {
         { name: "ผศ.ศุภกิจ จารุจรณ", affiliation: "ผู้เชี่ยวชาญ", image: "/ci/supakit.jpg" },
         { name: "ดร.ศิลปชัย เจริญ", affiliation: "คณะมนุษยศาสตร์และสังคมศาสตร์ มหาวิทยาลัยราชภัฏอุดรธานี", position: "", image: "https://huso.udru.ac.th/wp-content/uploads/2023/10/3.%E0%B8%94%E0%B8%A3.%E0%B8%A8%E0%B8%B4%E0%B8%A5%E0%B8%9B%E0%B8%8A%E0%B8%B1%E0%B8%A2-%E0%B9%80%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%8D-%E0%B8%A3%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B8%93%E0%B8%9A%E0%B8%94%E0%B8%B5-819x1024.jpg" },
         { name: "ผศ.ดร.ณัฐชยา นัจจนาวากุล", affiliation: "วิทยาลัยดุริยางคศิลป์ มหาวิทยาลัยมหิดล", position: "", image: "https://www.music.mahidol.ac.th/wp-content/uploads/2021/12/Natchaya-Natchanawakul.jpg" },
-        { name: "ดร.พิษณุ บุญศรีอนันต์", affiliation: "วิทยาลัยดุริยางคศิลป์ มหาวิทยาลัยมหาสารคาม", position: "", image: "https://scontent.fkkc4-2.fna.fbcdn.net/v/t39.30808-6/485359373_3924739301121220_7794762777726521514_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=og5ruUMZe9IQ7kNvwGISwyt&_nc_oc=AdnJJvq5mKL7v7JQ1GISeLP-O1AhCnAXFkgOtYR5IQGrOwiyFMiIe77zD3m16rQ_PmgwV-g4Ag1OLNLavXhRoU9N&_nc_zt=23&_nc_ht=scontent.fkkc4-2.fna&_nc_gid=UShw8jwUs9BxSqmKoxDxcA&oh=00_AfXp9IpBLdMAJK1SB6j6W6g61N70MCt8B76g8YmK0FyfJA&oe=68B29B8A" },
+        { name: "ดร.พิษณุ บุญศรีอนันต์", affiliation: "วิทยาลัยดุริยางคศิลป์ มหาวิทยาลัยมหาสารคาม", position: "", image: "/ci/pitsanu.jpg" },
         { name: "รศ.ดร.จตุพร สีม่วง", affiliation: "คณะศิลปกรรมศาสตร์ มหาวิทยาลัยขอนแก่น", image: "https://fa.kku.ac.th/wp-content/uploads/2022/11/5c8753694f971.webp" },
         { name: "ผศ.ดร.คมกริช การินทร์", affiliation: "วิทยาลัยดุริยางคศิลป์ มหาวิทยาลัยมหาสารคาม", position: "", image: "/ci/komgrich.jpg" },
         { name: "ผศ.กฤตษิพัฒน์ เอื้อจิตรเมศ", affiliation: "คณะมนุษยศาสตร์และสังคมศาสตร์ มหาวิทยาลัยราชภัฏนครศรีธรรมราช", position: "", image: "/ci/kritsipat.jpg" },
@@ -18,10 +18,10 @@ export default function Referee() {
         { name: "ผศ.บุตรี สุขปาน", affiliation: "คณะมนุษยศาสตร์ มหาวิทยาลัยนเรศวร", image: "https://mis.human.nu.ac.th/e-profiles/picup/large/2020_09_14_14_31_51.jpg" },
         { name: "ผศ.พรชัย ผลนิโครธ", affiliation: "คณะมนุษยศาสตร์ มหาวิทยาลัยนเรศวร", image: "ci/pornchai.jpg" },
         { name: "ผศ.ดร.วัศการก แก้วลอย", affiliation: "คณะศิลปกรรมศาสตร์ มหาวิทยาลัยขอนแก่น", image: "https://fa.kku.ac.th/wp-content/uploads/2022/11/5c87536c45566.webp" },
-        { name: "อ.กฤษฏิ์ โพชนุกูล", affiliation: "วิทยาลัยนาฏศิลปพัทลุง", image: "https://scontent.fkkc4-2.fna.fbcdn.net/v/t39.30808-6/510746560_10234955335236743_551661555222605954_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=bx3-grezYfgQ7kNvwF-6i6e&_nc_oc=AdlIOKg4_ibce0eiKVDF9QPMHJsW75hfq-vGPBfABq7q6UrT4uqpzCumllYUhd-lNCNpOeA9Aguou5FNFzAbyNpu&_nc_zt=23&_nc_ht=scontent.fkkc4-2.fna&_nc_gid=E6kSMTIyTFWPS0HrKtUdoQ&oh=00_AfVkEoi0_Jw5XHM74eGyyhAiCT4MJ5WLzVe474ikRj6nYQ&oe=68B305F8" },
-        { name: "ดร.ธนรัฐ อยู่สุขเจริญ", affiliation: "วิทยาลัยนาฏศิลปสุโขทัย", image: "https://scontent.fkkc4-2.fna.fbcdn.net/v/t39.30808-6/488188742_10213454002862602_3291192833707888818_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=s7o3AEyny_gQ7kNvwEVBOk0&_nc_oc=Adn5lTnKvtnAQ7PCDpPzO2Qj1WYzidmmR5r5IXyqpXfxvbmOzONFmimkHsfsAlLvEXuA9Tc_XBbL1ZdY4s4ttK66&_nc_zt=23&_nc_ht=scontent.fkkc4-2.fna&_nc_gid=ygVMIDsJ9_UMZ61BcO2QMQ&oh=00_AfXJouZBYYEzsA2bywW60z9-80A-yleWF-94Ut7Uhx-hag&oe=68B31411" },
+        { name: "อ.กฤษฏิ์ โพชนุกูล", affiliation: "วิทยาลัยนาฏศิลปพัทลุง", image: "/ci/pochanukul.jpg" },
+        { name: "ดร.ธนรัฐ อยู่สุขเจริญ", affiliation: "วิทยาลัยนาฏศิลปสุโขทัย", image: "/ci/thanarat.jpg" },
         { name: "อ.นิติพงษ์ ใคร่รู้", affiliation: "คณะครุศาสตร์ มหาวิทยาลัยราชภัฏบุรีรัมย์", image: "/ci/nitipong.jpg" },
-        { name: "ดร.ราชันย์ เจริญแก่นทราย", affiliation: "คณะครุศาสตร์และการพัฒนามนุษย์ มหาวิทยาลัยราชภัฏร้อยเอ็ด", image: "https://scontent.fkkc4-1.fna.fbcdn.net/v/t39.30808-6/505782009_2175686962903375_4833663082863925074_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=4pV3IhV-6q0Q7kNvwEgyQnZ&_nc_oc=AdnQZZAiitbJu0LofTDIKrNMRpbDUvHv2E9VXl6Gu-mQIrRT9ShNksI8oZAE_zZG45q_d0lONoZoLITSrkLgij_4&_nc_zt=23&_nc_ht=scontent.fkkc4-1.fna&_nc_gid=dP6v-1r80Nf9ATS_W0xGZQ&oh=00_AfU7SofXrDVTa-erVa1en5LlUOq4suHutdVLTlNbPtc82g&oe=68B325F9" },
+        { name: "ดร.ราชันย์ เจริญแก่นทราย", affiliation: "คณะครุศาสตร์และการพัฒนามนุษย์ มหาวิทยาลัยราชภัฏร้อยเอ็ด", image: "/ci/rachun.jpg" },
         { name: "ผศ.(พิเศษ)ชยุติ ทัศนวงศ์วรา", affiliation: "ผู้เชี่ยวชาญ", image: "ci/chayuti.jpg" },
     ];
 
