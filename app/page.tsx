@@ -11,59 +11,138 @@ const images = [
   '/ci/gallery/2024-4.jpg',
 ]
 
+// Function to get server time (simplified)
+async function getServerTime() {
+  const response = await fetch('http://worldtimeapi.org/api/ip');
+  const data = await response.json();
+  return new Date(data.datetime);
+}
+
 function CountdownTimer() {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
     minutes: 0,
-    seconds: 0
+    seconds: 0,
   });
+  const [isEventStarted, setIsEventStarted] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // 1. เพิ่ม state สำหรับ loading
 
   useEffect(() => {
-    const eventDate = new Date('2025-09-06T07:30:00+07:00');
+    const eventDate = new Date('2025-09-06T06:00:00+07:00');
+    let timer: NodeJS.Timeout;
 
-    const timer = setInterval(() => {
-      const now = new Date();
-      const difference = eventDate.getTime() - now.getTime();
+    // 2. สร้างฟังก์ชันสำหรับเริ่มนับถอยหลัง
+    const startCountdown = (initialDifference: number) => {
+      let difference = initialDifference;
 
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60)
-        });
+      if (difference <= 0) {
+        setIsEventStarted(true);
+        setIsLoading(false);
+        return;
       }
-    }, 1000);
+
+      const updateTimer = () => {
+        if (difference > 0) {
+          setTimeLeft({
+            days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+            hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+            minutes: Math.floor((difference / 1000 / 60) % 60),
+            seconds: Math.floor((difference / 1000) % 60),
+          });
+          difference -= 1000;
+        } else {
+          setIsEventStarted(true);
+          clearInterval(timer);
+        }
+      };
+
+      updateTimer(); // เรียกครั้งแรกทันที
+      timer = setInterval(updateTimer, 1000);
+    };
+
+    // 3. ดึงเวลาจาก Server เพื่อความแม่นยำ
+    fetch('https://worldtimeapi.org/api/ip')
+      .then(res => res.json())
+      .then(data => {
+        const serverNow = new Date(data.datetime);
+        const initialDifference = eventDate.getTime() - serverNow.getTime();
+        startCountdown(initialDifference);
+      })
+      .catch(() => {
+        // หากดึงเวลาจาก Server ไม่ได้ ให้ใช้เวลาจากเครื่องผู้ใช้แทน
+        const clientNow = new Date();
+        const initialDifference = eventDate.getTime() - clientNow.getTime();
+        startCountdown(initialDifference);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
 
     return () => clearInterval(timer);
   }, []);
 
+  // 4. แสดงข้อความต้อนรับเมื่อถึงเวลา
+  if (isEventStarted) {
+    return (
+      <div className="max-w-4xl mx-auto backdrop-blur-sm bg-black/30 p-8 rounded-xl shadow-2xl border border-ci-gold/30 transition-all duration-500">
+        <div className="text-center space-y-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-ci-gold font-sao">
+            ยินดีต้อนรับ
+          </h2>
+          <p className="text-xl font-bold text-white/90 font-sao">
+            สู่การประกวดดนตรีไทย ภาคตะวันออกเฉียงเหนือ ครั้งที่ ๒๔
+          </p>
+          <p className="text-lg text-white/70">
+            ณ คณะศิลปกรรมศาสตร์ มหาวิทยาลัยขอนแก่น
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // 5. แสดง Loading ขณะดึงข้อมูลเวลา
+  if (isLoading) {
+    return (
+        <div className="max-w-4xl mx-auto p-8 text-center">
+            <p className="text-white/70 animate-pulse">กำลังเทียบเวลามาตรฐาน...</p>
+        </div>
+    );
+  }
+
+  // --- แก้ไข: แสดงหัวข้อภายในตัว CountdownTimer (จะถูกซ่อนเมื่อ isEventStarted === true) ---
   return (
-    <div className="max-w-4xl mx-auto backdrop-blur-sm bg-black/30 p-4 sm:p-6 md:p-8 rounded-xl shadow-2xl border border-white/10 hover:border-ci-gold/30 transition-all duration-500">
-      <div className="grid grid-flow-col gap-3 sm:gap-4 md:gap-6 lg:gap-8 text-center auto-cols-max items-center justify-center">
-        {[
-          { value: timeLeft.days, label: "วัน" },
-          { value: timeLeft.hours, label: "ชั่วโมง" },
-          { value: timeLeft.minutes, label: "นาที" },
-          { value: timeLeft.seconds, label: "วินาที" }
-        ].map((item, index) => (
-          <div key={index} className="flex flex-col items-center">
-            <div className="flex items-center justify-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-ci-gold bg-black/20 px-2 sm:px-3 md:px-4 py-2 rounded-lg min-w-[2.5em] text-center">
-                {String(item.value).padStart(2, '0')}
-              </div>
-              {index < 3 && (
-                <div className="text-xl sm:text-2xl md:text-3xl text-ci-gold font-bold mx-1 sm:mx-2">
-                  :
+    <div className="space-y-6">
+      <h2 className="text-2xl font-bold text-ci-gold font-sao flex items-center justify-center gap-3">
+        <FontAwesomeIcon icon={faClock} className="text-xl" />
+        นับถอยหลังสู่วันประกวด
+      </h2>
+
+      <div className="max-w-4xl mx-auto backdrop-blur-sm bg-black/30 p-4 sm:p-6 md:p-8 rounded-xl shadow-2xl border border-white/10 hover:border-ci-gold/30 transition-all duration-500">
+        <div className="grid grid-flow-col gap-3 sm:gap-4 md:gap-6 lg:gap-8 text-center auto-cols-max items-center justify-center">
+          {[
+            { value: timeLeft.days, label: "วัน" },
+            { value: timeLeft.hours, label: "ชั่วโมง" },
+            { value: timeLeft.minutes, label: "นาที" },
+            { value: timeLeft.seconds, label: "วินาที" }
+          ].map((item, index) => (
+            <div key={index} className="flex flex-col items-center">
+              <div className="flex items-center justify-center">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-ci-gold bg-black/20 px-2 sm:px-3 md:px-4 py-2 rounded-lg min-w-[2.5em] text-center">
+                  {String(item.value).padStart(2, '0')}
                 </div>
-              )}
+                {index < 3 && (
+                  <div className="text-xl sm:text-2xl md:text-3xl text-ci-gold font-bold mx-1 sm:mx-2">
+                    :
+                  </div>
+                )}
+              </div>
+              <div className="text-xs sm:text-sm md:text-base text-white/70 mt-1 sm:mt-2 font-kku">
+                {item.label}
+              </div>
             </div>
-            <div className="text-xs sm:text-sm md:text-base text-white/70 mt-1 sm:mt-2 font-kku">
-              {item.label}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   )
@@ -120,10 +199,6 @@ export default function Home() {
 
         {/* Countdown Section */}
         <div className="space-y-6">
-          <h2 className="text-2xl font-bold text-ci-gold font-sao flex items-center justify-center gap-3">
-            <FontAwesomeIcon icon={faClock} className="text-xl" />
-            นับถอยหลังสู่วันประกวด
-          </h2>
           <CountdownTimer />
         </div>
 
