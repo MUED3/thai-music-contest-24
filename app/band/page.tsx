@@ -149,7 +149,7 @@ export default function BandContestPage() {
                   >
                     <div className="flex justify-between items-start">
                       <h4 className="font-bold text-ci-gold text-lg pr-4">{band.name}</h4>
-                      <span className="text-sm font-mono text-white/60 whitespace-nowrap">
+                      <span className="text-sm font-mono font-sarabun text-white/60 whitespace-nowrap">
                         ลำดับที่ {band.drawOrder}
                       </span>
                     </div>
