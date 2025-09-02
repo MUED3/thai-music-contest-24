@@ -16,7 +16,7 @@ export default function Footer() {
           {/* Column 1: About & Logo */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <Image src="/ci/logo.svg" alt="KKU Logo" width={40} height={40} />
+              <Image src="/ci/KKU-gold.svg" alt="KKU Logo" width={40} height={40} />
               <div>
                 <h3 className="text-xl font-sao font-bold text-ci-gold">
                   การประกวดดนตรีไทย
