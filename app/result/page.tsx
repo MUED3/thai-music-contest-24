@@ -7,14 +7,20 @@ import bandResultsData from '../../data/results.json';
 import soloResultsData from '../../data/solo-results.json';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
-// --- Interfaces and Styles (ไม่เปลี่ยนแปลง) ---
+// --- Interfaces and Styles (ปรับปรุงสี) ---
 interface Result {
   prize: string;
   trophy?: string;
   name: string;
-  school: string;
+  school?: string;
   province?: string;
   medal?: string;
+}
+
+interface OutstandingAward {
+  instrument: string;
+  name: string;
+  school: string;
 }
 
 interface CompetitionResult {
@@ -23,16 +29,20 @@ interface CompetitionResult {
   announcementDate: string;
   results: Result[];
   trophyContext?: string;
+  outstandingAwards?: OutstandingAward[];
 }
 
 const prizeStyles: { [key: string]: { icon: IconDefinition; color: string; border: string; bg: string } } = {
   'รางวัลชนะเลิศ': { icon: faTrophy, color: 'text-yellow-400', border: 'border-yellow-400/50', bg: 'bg-yellow-400/10' },
-  'รางวัลรองชนะเลิศอันดับ ๑': { icon: faMedal, color: 'text-gray-300', border: 'border-gray-300/50', bg: 'bg-gray-300/10' },
+  'รางวัลรองชนะเลิศอันดับ ๑': { icon: faMedal, color: 'text-slate-300', border: 'border-slate-300/50', bg: 'bg-slate-300/10' },
   'รางวัลรองชนะเลิศอันดับ ๒': { icon: faMedal, color: 'text-orange-400', border: 'border-orange-400/50', bg: 'bg-orange-400/10' },
   'รางวัลชมเชย': { icon: faAward, color: 'text-blue-400', border: 'border-blue-400/50', bg: 'bg-blue-400/10' },
   'รางวัลเหรียญทอง': { icon: faStar, color: 'text-yellow-500', border: 'border-yellow-500/30', bg: 'bg-yellow-500/10' },
+  'รางวัลเกียรติบัตรเหรียญทอง': { icon: faStar, color: 'text-yellow-500', border: 'border-yellow-500/30', bg: 'bg-yellow-500/10' },
   'รางวัลเหรียญเงิน': { icon: faStar, color: 'text-slate-400', border: 'border-slate-400/30', bg: 'bg-slate-400/10' },
+  'รางวัลเกียรติบัตรเหรียญเงิน': { icon: faStar, color: 'text-slate-400', border: 'border-slate-400/30', bg: 'bg-slate-400/10' },
   'รางวัลเหรียญทองแดง': { icon: faStar, color: 'text-amber-600', border: 'border-amber-600/30', bg: 'bg-amber-600/10' },
+  'รางวัลเข้าร่วม': { icon: faCertificate, color: 'text-gray-500', border: 'border-gray-500/30', bg: 'bg-gray-500/10' },
 };
 
 // --- Reusable Components ---
@@ -51,7 +61,7 @@ const ResultItem: React.FC<{ result: Result; index: number }> = ({ result, index
         </div>
         {result.trophy && <p className="text-xs text-yellow-300/80 font-kku">{result.trophy}</p>}
         <p className="text-xl font-semibold text-white mt-1">{result.name}</p>
-        <p className="text-md text-white/80 font-kku">{result.school}</p>
+        {result.school && <p className="text-md text-white/80 font-kku">{result.school}</p>}
         {result.province && <p className="text-sm text-white/60 font-kku">{result.province}</p>}
       </div>
     </div>
@@ -60,7 +70,7 @@ const ResultItem: React.FC<{ result: Result; index: number }> = ({ result, index
 
 // CompetitionCard (ปรับปรุงใหม่ให้มีทั้ง Table และ Card)
 const CompetitionCard: React.FC<{ competition: CompetitionResult }> = ({ competition }) => (
-  <div className="card backdrop-blur-sm bg-black/20 border border-white/10 overflow-hidden">
+  <div className="card backdrop-blur-sm bg-black/20 border border-white/10 overflow-hidden animate-fade-in">
     <div className="p-6 md:p-8 border-b border-white/10">
       <h2 className="text-2xl md:text-3xl font-bold text-ci-gold font-sao">{competition.title}</h2>
       <p className="text-lg text-white/80 mb-1 font-kku">ระดับ{competition.level}</p>
@@ -83,7 +93,7 @@ const CompetitionCard: React.FC<{ competition: CompetitionResult }> = ({ competi
             <tr>
               <th className="p-4 font-semibold text-ci-gold w-16 text-center">ลำดับ</th>
               <th className="p-4 font-semibold text-ci-gold">รางวัล</th>
-              <th className="p-4 font-semibold text-ci-gold">ชื่อ-สกุล</th>
+              <th className="p-4 font-semibold text-ci-gold">ชื่อ-สกุล / ชื่อวง</th>
               <th className="p-4 font-semibold text-ci-gold">สถานศึกษา</th>
               <th className="p-4 font-semibold text-ci-gold w-32 text-center">เหรียญ</th>
             </tr>
@@ -101,7 +111,7 @@ const CompetitionCard: React.FC<{ competition: CompetitionResult }> = ({ competi
                     </div>
                   </td>
                   <td className="p-4 font-kku font-sarabun font-semibold text-white">{result.name}</td>
-                  <td className="p-4 font-kku font-sarabun text-white/80">{result.school}</td>
+                  <td className="p-4 font-kku font-sarabun text-white/80">{result.school || '-'}</td>
                   <td className="p-4 font-kku font-sarabun text-center">
                     {result.medal ? (
                       <span className={`font-semibold px-2 py-1 rounded-full text-xs ${style.bg} ${style.color}`}>
@@ -116,11 +126,62 @@ const CompetitionCard: React.FC<{ competition: CompetitionResult }> = ({ competi
         </table>
       </div>
     </div>
+
+    {/* Outstanding Awards Section */}
+    {competition.outstandingAwards && competition.outstandingAwards.length > 0 && (
+      <div className="border-t border-white/10 p-6 md:p-8">
+        <h3 className="text-xl md:text-2xl font-bold text-ci-gold mb-4 flex items-center gap-3 font-sao">
+          <FontAwesomeIcon icon={faStar} />
+          <span>รางวัลเครื่องมือดีเด่น</span>
+        </h3>
+
+        {/* Mobile View for Outstanding Awards */}
+        <div className="grid gap-3 md:hidden">
+          {competition.outstandingAwards.map((award, index) => (
+            <div key={index} className="bg-black/20 p-4 rounded-lg border border-white/10">
+              <p className="font-semibold text-yellow-400">{award.instrument}</p>
+              <p className="text-lg text-white mt-1">{award.name}</p>
+              <p className="text-sm text-white/70 font-kku">{award.school}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop View for Outstanding Awards */}
+        <div className="hidden md:block">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left">
+              <thead className="bg-white/5">
+                <tr>
+                  <th className="p-3 font-semibold text-ci-gold">เครื่องดนตรี</th>
+                  <th className="p-3 font-semibold text-ci-gold">ชื่อ-สกุล</th>
+                  <th className="p-3 font-semibold text-ci-gold">สถานศึกษา/วง</th>
+                </tr>
+              </thead>
+              <tbody>
+                {competition.outstandingAwards.map((award, index) => (
+                  <tr key={index} className="border-t border-white/10">
+                    <td className="p-3 font-sarabun font-semibold text-yellow-400">{award.instrument}</td>
+                    <td className="p-3 font-kku font-sarabun text-white">{award.name}</td>
+                    <td className="p-3 font-kku font-sarabun text-white/80">{award.school}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    )}
   </div>
 );
 
 // --- Main Page Component ---
 export default function ResultsPage() {
+  const [activeTab, setActiveTab] = useState<'band' | 'solo'>('band');
+  
+  // States for Band
+  const [selectedBandCompetition, setSelectedBandCompetition] = useState<CompetitionResult | null>(null);
+
+  // States for Solo
   const [selectedLevel, setSelectedLevel] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
@@ -133,7 +194,7 @@ export default function ResultsPage() {
     ));
   }, [selectedLevel]);
 
-  const selectedCompetition = useMemo(() => {
+  const selectedSoloCompetition = useMemo(() => {
     if (!selectedLevel || !selectedCategory) return null;
     return soloResultsData.find(d => d.level === selectedLevel && d.title === selectedCategory) || null;
   }, [selectedLevel, selectedCategory]);
@@ -142,6 +203,18 @@ export default function ResultsPage() {
     setSelectedLevel(prev => (prev === level ? null : level));
     setSelectedCategory(null);
   };
+
+  const handleBandSelect = (competition: CompetitionResult) => {
+    setSelectedBandCompetition(prev => (prev?.title === competition.title && prev?.level === competition.level ? null : competition));
+  };
+
+  const handleTabChange = (tab: 'band' | 'solo') => {
+    setActiveTab(tab);
+    // Reset selections when changing tabs
+    setSelectedBandCompetition(null);
+    setSelectedLevel(null);
+    setSelectedCategory(null);
+  }
 
   return (
     <div className="max-w-6xl mx-auto py-12 px-4 font-kku fade-in space-y-12">
@@ -153,24 +226,7 @@ export default function ResultsPage() {
           การประกวดดนตรีไทย ภาคตะวันออกเฉียงเหนือ ครั้งที่ ๒๔
         </p>
       </div>
-
-      {/* Section: Band Results */}
-      {bandResultsData.length > 0 ? (
-        <div className="space-y-8">
-          <h2 className="text-3xl font-bold text-ci-gold font-sao text-center">ผลการประกวดวงดนตรี</h2>
-          {bandResultsData.map((competition, index) => (
-            <CompetitionCard key={index} competition={competition} />
-          ))}
-        </div>
-      ) : (
-        <div className="space-y-8">
-          <h2 className="text-3xl font-bold text-ci-gold font-sao text-center">ผลการประกวดวงดนตรี</h2>
-          <div className="text-center card p-8 bg-black/20">
-            <p className="text-white/70">ยังไม่ประกาศผลประเภทวง</p>
-          </div>
-        </div>
-      )}
-
+      
       {/* Certificate Download Button */}
       <div className="text-center">
         <a
@@ -182,69 +238,96 @@ export default function ResultsPage() {
           <FontAwesomeIcon icon={faCertificate} className="mr-3" />
           <span>ดาวน์โหลดเกียรติบัตร</span>
         </a>
+        <p className="text-white/70 text-sm mt-2">เกียรติบัตรประเภทเดี่ยวเครื่องดนตรีและประเภทวงดนตรี</p>
       </div>
 
-      {/* Divider */}
-      {bandResultsData.length > 0 && soloResultsData.length > 0 && (
-        <div className="border-b-2 border-dashed border-white/20"></div>
-      )}
+      {/* Tab Switcher */}
+      <div className="flex justify-center bg-black/20 p-1 rounded-xl max-w-md mx-auto">
+        <button onClick={() => handleTabChange('band')} className={`w-1/2 p-3 rounded-lg font-bold transition-all ${activeTab === 'band' ? 'bg-ci-gold text-black' : 'text-white/70 hover:bg-white/10'}`}>
+          <FontAwesomeIcon icon={faUsers} className="mr-2" /> ประเภทวง
+        </button>
+        <button onClick={() => handleTabChange('solo')} className={`w-1/2 p-3 rounded-lg font-bold transition-all ${activeTab === 'solo' ? 'bg-ci-gold text-black' : 'text-white/70 hover:bg-white/10'}`}>
+          <FontAwesomeIcon icon={faMusic} className="mr-2" /> ประเภทเดี่ยว
+        </button>
+      </div>
 
-      {/* Section: Solo/Vocal Results */}
-      {soloResultsData.length > 0 && (
-        <div className="space-y-8">
-          <h2 className="text-3xl font-bold text-ci-gold font-sao text-center">ผลการประกวดเดี่ยวและขับร้อง</h2>
-          
-          {/* Step 1: Level Selection */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold text-white flex items-center gap-2">
-              <span className="bg-ci-gold text-black rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">1</span>
-              เลือกระดับชั้น
-            </h3>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {['ประถมศึกษา', 'มัธยมศึกษา'].map(level => (
-                <button key={level} onClick={() => handleLevelSelect(level)}
-                  className={`p-6 rounded-xl border-2 transition-all duration-300 flex items-center justify-between ${selectedLevel === level ? 'bg-ci-gold/20 border-ci-gold scale-105' : 'bg-black/20 border-transparent hover:border-ci-gold/50'}`}>
-                  <div className="flex items-center gap-3">
-                    <FontAwesomeIcon icon={faGraduationCap} className="text-xl text-ci-gold" />
-                    <span className="text-lg font-semibold text-white">{level}</span>
+      {/* Content based on active tab */}
+      <div className="min-h-[300px]">
+        {activeTab === 'band' && (
+          <div className="space-y-8 animate-fade-in">
+            <h3 className="text-xl font-bold text-white text-center">เลือกรายการประกวดประเภทวง</h3>
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+              {bandResultsData.map((comp, index) => (
+                <button key={index} onClick={() => handleBandSelect(comp)}
+                  className={`p-5 rounded-xl border-2 text-left transition-all duration-300 flex flex-col justify-between h-full ${selectedBandCompetition?.title === comp.title && selectedBandCompetition?.level === comp.level ? 'bg-ci-gold/20 border-ci-gold scale-105' : 'bg-black/20 border-transparent hover:border-ci-gold/50'}`}>
+                  <div>
+                    <p className="text-lg font-bold font-sao text-ci-gold">{comp.title}</p>
+                    <p className="text-sm text-white/60">ระดับ{comp.level}</p>
                   </div>
-                  <FontAwesomeIcon icon={faChevronRight} className={`transition-transform duration-300 ${selectedLevel === level ? 'rotate-90 text-ci-gold' : 'text-white/30'}`} />
+                  <div className={`mt-3 text-xs font-bold self-end ${selectedBandCompetition?.title === comp.title && selectedBandCompetition?.level === comp.level ? 'text-ci-gold' : 'text-white/40'}`}>
+                    ดูผลลัพธ์
+                  </div>
                 </button>
               ))}
             </div>
+            {selectedBandCompetition && (
+              <div className="mt-8">
+                <CompetitionCard competition={selectedBandCompetition} />
+              </div>
+            )}
           </div>
+        )}
 
-          {/* Step 2: Category Selection */}
-          {selectedLevel && (
-            <div className="card p-6 backdrop-blur-sm bg-black/20 animate-fade-in">
-              <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                <span className="bg-ci-gold text-black rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">2</span>
-                เลือกรายการประกวด
+        {activeTab === 'solo' && (
+          <div className="space-y-8 animate-fade-in">
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                <span className="bg-ci-gold text-black rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">1</span>
+                เลือกระดับชั้น
               </h3>
-              {soloCategories.length > 0 ? (
-                <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
-                  {soloCategories.map(cat => (
-                    <button key={cat} onClick={() => setSelectedCategory(cat)}
-                      className={`p-4 rounded-lg border text-left transition-all duration-300 flex items-center gap-3 ${selectedCategory === cat ? 'bg-ci-gold/20 border-ci-gold' : 'bg-black/20 border-white/10 hover:bg-white/5'}`}>
-                      <FontAwesomeIcon icon={faMusic} className="text-ci-gold/70" />
-                      <span className="text-white/90 text-sm">{cat}</span>
-                    </button>
-                  ))}
-                </div>
-              ) : <p className="text-center text-white/60 py-4">ไม่พบข้อมูลรายการประกวดในระดับชั้นนี้</p>}
+              <div className="grid sm:grid-cols-2 gap-4">
+                {['ประถมศึกษา', 'มัธยมศึกษา'].map(level => (
+                  <button key={level} onClick={() => handleLevelSelect(level)}
+                    className={`p-6 rounded-xl border-2 transition-all duration-300 flex items-center justify-between ${selectedLevel === level ? 'bg-ci-gold/20 border-ci-gold scale-105' : 'bg-black/20 border-transparent hover:border-ci-gold/50'}`}>
+                    <div className="flex items-center gap-3">
+                      <FontAwesomeIcon icon={faGraduationCap} className="text-xl text-ci-gold" />
+                      <span className="text-lg font-semibold text-white">{level}</span>
+                    </div>
+                    <FontAwesomeIcon icon={faChevronRight} className={`transition-transform duration-300 ${selectedLevel === level ? 'rotate-90 text-ci-gold' : 'text-white/30'}`} />
+                  </button>
+                ))}
+              </div>
             </div>
-          )}
 
-          {/* Step 3: Results Display */}
-          {selectedCompetition && (
-            <div className="mt-8 animate-fade-in">
-              <CompetitionCard competition={selectedCompetition} />
-            </div>
-          )}
-        </div>
-      )}
+            {selectedLevel && (
+              <div className="card p-6 backdrop-blur-sm bg-black/20 animate-fade-in">
+                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                  <span className="bg-ci-gold text-black rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">2</span>
+                  เลือกรายการประกวด
+                </h3>
+                {soloCategories.length > 0 ? (
+                  <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+                    {soloCategories.map(cat => (
+                      <button key={cat} onClick={() => setSelectedCategory(cat)}
+                        className={`p-4 rounded-lg border text-left transition-all duration-300 flex items-center gap-3 ${selectedCategory === cat ? 'bg-ci-gold/20 border-ci-gold' : 'bg-black/20 border-white/10 hover:bg-white/5'}`}>
+                        <FontAwesomeIcon icon={faMusic} className="text-ci-gold/70" />
+                        <span className="text-white/90 text-sm">{cat}</span>
+                      </button>
+                    ))}
+                  </div>
+                ) : <p className="text-center text-white/60 py-4">ไม่พบข้อมูลรายการประกวดในระดับชั้นนี้</p>}
+              </div>
+            )}
 
-      {/* Fallback message */}
+            {selectedSoloCompetition && (
+              <div className="mt-8">
+                <CompetitionCard competition={selectedSoloCompetition} />
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+
       {bandResultsData.length === 0 && soloResultsData.length === 0 && (
         <div className="text-center card p-10">
           <h2 className="text-2xl text-white/80">ยังไม่มีการประกาศผลรางวัล</h2>
